@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* --- Header & Navigation Bar --- */
+        header {
+            background-color: #0078d7; /* Blue header background */
+            color: white;
+            padding: 10px 20px; /* Thinner padding for header */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between; /* Pushes logo to left, nav items to right */
+            align-items: center;
+            max-width: 1200px; /* Limit content width */
+            margin: 0 auto; /* Center the nav content */
+            padding: 5px 0; /* Thin padding within the nav */
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.8rem; /* Size for the agency name as logo */
+            font-weight: 700;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0; /* Remove default margin */
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 18px; /* Spacing between nav items */
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.05rem; /* Slightly smaller font for thinner nav */
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff9900; /* Orange hover effect */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1557804506-663806940f82?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative; /* For the overlay */
+            overflow: hidden; /* Ensure overlay fits */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 120, 215, 0.6); /* Blue overlay with transparency */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Content above overlay */
+            color: white;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem; /* Larger font size */
+            margin: 0 0 20px 0;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin: 0 0 30px 0;
+            font-weight: 400;
+        }
+
+        .hero-content a {
+            display: inline-block;
+            text-decoration: none;
+            background: #ff9900; /* Bright orange button */
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px; /* More rounded */
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 153, 0, 0.4);
+        }
+
+        .hero-content a:hover {
+            background: #cc7a00; /* Darker orange on hover */
+            transform: translateY(-3px); /* Lift effect */
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .services h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #0078d7;
+            position: relative;
+        }
+        .services h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff9900;
+            border-radius: 2px;
+        }
+
+        .services .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Styling for the individual service card with image hover effect */
+        .service {
+            position: relative; /* Essential for positioning overlay */
+            background-color: #f0f8ff; /* Fallback/initial background */
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden; /* Important to contain the image and text */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            height: 250px; /* Fixed height for consistent card sizing */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Background Image for Service Cards */
+        .service-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) brightness(50%); /* Start desaturated and dark */
+            transition: filter 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .service:hover .service-bg {
+            filter: grayscale(0%) brightness(70%); /* On hover, colorize and slightly brighten */
+        }
+
+        /* Content inside the service card */
+        .service-content {
+            position: relative;
+            z-index: 2; /* Ensures text is above the image */
+            color: white; /* Text color when image is visible */
+            padding: 20px;
+            opacity: 0; /* Start hidden */
+            transform: translateY(20px); /* Start slightly below */
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Add text shadow for readability */
+        }
+
+        .service:hover .service-content {
+            opacity: 1; /* Fade in on hover */
+            transform: translateY(0); /* Move to original position */
+        }
+
+        .service-content i {
+            font-size: 3.5rem; /* Larger icons */
+            margin-bottom: 15px;
+            color: #ff9900; /* Orange icon color on hover */
+            transition: color 0.3s ease;
+        }
+
+        .service-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white; /* White title on hover */
+        }
+
+        .service-content p {
+            font-size: 1rem;
+            color: #e0e0e0; /* Lighter white for paragraph */
+        }
+
+        /* Fallback for when JS is disabled or images fail to load.
+           You might want to style .service-content to be always visible
+           if no image loads, or provide a default solid background. */
+
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #0078d7;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+         .testimonials h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff9900;
+            border-radius: 2px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15); /* Slightly transparent white */
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "“";
+            font-size: 3rem;
+            color: #ff9900;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+            opacity: 0.8;
+        }
+
+        .testimonial-card::after {
+            content: "”";
+            font-size: 3rem;
+            color: #ff9900;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            line-height: 1;
+            opacity: 0.8;
+        }
+
+        .testimonial-card p {
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            margin-top: 15px;
+            display: block;
+            color: #e0e0e0;
+        }
+
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #0078d7;
+            position: relative;
+        }
+        .contact h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff9900;
+            border-radius: 2px;
+        }
+
+        .contact form {
+            max-width: 600px; /* Wider form */
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #f0f8ff; /* Light blue background for form */
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between form fields */
+        }
+
+        .contact form input,
+        .contact form textarea {
+            width: calc(100% - 24px); /* Account for padding */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact form input:focus,
+        .contact form textarea:focus {
+            border-color: #0078d7;
+            box-shadow: 0 0 0 3px rgba(0, 120, 215, 0.2);
+            outline: none;
+        }
+
+        .contact form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact form button {
+            background: #0078d7;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            align-self: center; /* Center the button */
+            box-shadow: 0 4px 10px rgba(0, 120, 215, 0.3);
+        }
+
+        .contact form button:hover {
+            background: #005fa3;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #005fa3; /* Darker blue footer */
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #ff9900; /* Orange link */
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+            nav ul li {
+                margin: 0 12px;
+            }
+            nav ul li a {
+                font-size: 1rem;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            .services h2, .testimonials h2, .contact h2 {
+                font-size: 2.2rem;
+            }
+            .services .container, .testimonial-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .service {
+                height: 220px; /* Adjust height for smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column; /* Stack logo and nav items */
+                padding: 10px 0;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero {
+                height: 70vh; /* Shorter hero section on smaller screens */
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .hero-content a {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            .services h2, .testimonials h2, .contact h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            .service {
+                height: 200px; /* Further adjust height for mobile */
+            }
+            .service-content h3 {
+                font-size: 1.4rem;
+            }
+            .service-content p {
+                font-size: 0.95rem;
+            }
+            .testimonial-card {
+                font-size: 1rem;
+                padding: 20px;
+            }
+            .testimonial-card::before, .testimonial-card::after {
+                font-size: 2.5rem;
+            }
+            .contact form {
+                padding: 30px 20px;
+            }
+            .contact form input,
+            .contact form textarea {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+            .contact form button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+        /* Inside your existing <style> block */
+
+.service-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image within its bounds */
+    display: block; /* Removes any extra space below the image */
+    filter: grayscale(100%) brightness(100%); /* Initial desaturated and dark state */
+    transition: filter 0.5s ease-in-out;
+}
+
+.service:hover .service-bg img {
+    filter: grayscale(0%) brightness(70%); /* On hover, colorize and slightly brighten */
+}
+.about-us {
+            padding: 80px 20px;
+            background: #f0f8ff; /* Light blue background for consistency with contact form */
+            text-align: center;
+            color: #333; /* Darker text for readability on light background */
+        }
+
+        .about-us h2 {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #0078d7; /* Blue heading color */
+            position: relative;
+        }
+
+        .about-us h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: #ff9900; /* Orange underline */
+            border-radius: 2px;
+        }
+
+        .about-us-content {
+            max-width: 900px; /* Adjust max-width as needed */
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8; /* Increased line height for better readability */
+            text-align: left; /* Align text left within the content block */
+        }
+
+        .about-us-content p {
+            margin-bottom: 20px;
+        }
+
+        .about-us-content p:last-child {
+            margin-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Digital Marketing Agency</h1>
+            </div>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about-us">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Boost Your Business</h1>
+            <p>Professional digital marketing services to grow your brand.</p>
+            <a href="#services">Learn More</a>
+        </div>
+    </section>
+
+   <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="container">
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/seo.jpg" alt="SEO Optimization">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-chart-line"></i>
+                <h3>SEO Optimization</h3>
+                <p>Improve your search engine rankings and drive organic traffic.</p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/sm.jpg" alt="Social Media">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-ad"></i>
+                <h3>Social Media Ads</h3>
+                <p>Reach your audience with tailored social media campaigns.</p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/email.jpg" alt="Email Marketing">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-mail-bulk"></i>
+                <h3>Email Marketing</h3>
+                <p>Engage with your customers through effective email campaigns.</p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/ppc.jpg" alt="PPC Management">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-search-dollar"></i>
+                <h3>PPC Management</h3>
+                <p>Maximize your ROI with precisely targeted Pay-Per-Click campaigns.</p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/mobile.jpg" alt="Mobile Marketing">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Marketing</h3>
+                <p>Connect with your audience on the go through optimized mobile strategies.</p>
+            </div>
+        </div>
+        <div class="service">
+            <div class="service-bg">
+                <img src="images/influ.jpg" alt="Influencer Marketing">
+            </div>
+            <div class="service-content">
+                <i class="fas fa-users"></i>
+                <h3>Influencer Marketing</h3>
+                <p>Leverage influential voices to amplify your brand's reach and credibility.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    </section>
+    <section class="about-us" id="about-us">
+    <h2>About Us</h2>
+    <div class="about-us-content">
+        <p>Welcome to <b>Digital Marketing Agency</b>, where innovation meets impact. Founded in 2025, we've been dedicated to helping businesses like yours thrive in the ever-evolving digital landscape. Our team of passionate experts specializes in creating bespoke strategies that drive measurable results, boost brand visibility, and foster meaningful connections with your audience.</p>
+        <p>We believe in a client-centric approach, taking the time to understand your unique goals and challenges. From cutting-edge <b>SEO optimization</b> and targeted <b>social media campaigns</b> to engaging <b>email marketing</b> and precise <b>PPC management</b>, we leverage the latest tools and techniques to ensure your digital presence is not just seen, but felt. Partner with us, and let's craft your success story together.</p>
+    </div>
+</section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Tell us about your project or specific needs..." rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Digital Marketing Agency. All Rights Reserved. <a href="#hero">Back to top</a></p>
+    </footer>
+</body>
+</html>
